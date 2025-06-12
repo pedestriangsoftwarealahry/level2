@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herní režim - Level 2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="loading-screen" class="game-screen active">
+            <p id="loading-text">Načítám složku Level 2<span class="dots"></span></p>
+        </div>
+
+        <div id="conditions-screen" class="game-screen">
+            <h1 id="conditions-title" class="title">Podmínky hry a ujednání</h1>
+            <div class="text-block-container">
+                <p id="condition-text-1" class="dynamic-text current">Během hry nesmí být tyto stránky zavřeny, jinak se ztratí veškerý pokrok a přijdeš o všechny vyhrané peníze!</p>
+                <p id="condition-text-2" class="dynamic-text">Stránky kontrolují otevření jiných aplikací. Pokud otevřeš jakoukoli jinou aplikaci, bude to zaznamenáno a ty přijdeš automaticky o všechny výhry. Prosím, hraj poctivě a bez podvodů, bez AI apod.</p>
+                <p id="condition-text-3" class="dynamic-text">Tuto hru je možné hrát jen v rámci jednoho dne. Můžeš si zvolit jeden ze dnů 13., 14., nebo 15. června. Nemůžeš to hrát v jiné dny a současně jde tuto hru hrát jen jeden den! Doporučuji si vyhradit jeden celý den na tuto hru. (Asi ne pátek.) Pokud budeš mít na hru nedostatek času, vyhraješ méně peněz. Nelze jednoduše určit, jak dlouho bude hra trvat - to totiž závisí jen na tvojí rychlosti. Doporučuji mít hru hotovou do setmění, následně by ji bylo velmi obtížné hrát. I přesto máš ale termín na odevzdání až do půlnoci toho dne, kdy hru spustíš.</p>
+                <p id="condition-text-4" class="dynamic-text">Zadání hry je vždy uvedeno u každé úlohy a po vyřešení musíš správně odevzdat úlohu - to je ale vždy u každé úlohy vysvětleno.</p>
+                <p id="condition-text-5" class="dynamic-text">Jakékoli hackování těchto stránek nebo serveru (např. s AI) za účelem obejití systému a získání správných odpovědí bez práce je zakázáno. Takové hacknutí bude rozpoznáno a automatcky ztratíš možnost výhry!</p>
+                <p id="condition-text-6" class="dynamic-text">Já, jakožto organizátor hry mám vždy právo ukončit hru bez předchozího varování a zamítnout ti výhru. To se může stát, pokud budu mít podezření, že jakkoli podvádíš nebo nedodržuješ podmínky hry, děláš schválnosti apod. Kdykoli ti můžu výhru odebrat bez předchozího varování a to i bez udání důvodu! (Nebudu toho zneužívat, když uvidím, že hraješ poctivě a bez potenciálních podvodů!)</p>
+                <p id="condition-text-7" class="dynamic-text">V případě naznačení neochoty o hru (např. komentáře, že tě to nebaví a že se ti to nechce dělat), mám plný nárok hru ukončit bez výhry!</p>
+            </div>
+            <button id="next-condition-btn" class="game-button">Další</button>
+        </div>
+
+        <div id="game-progress-screen" class="game-screen">
+            <h1 id="progress-title" class="title">Průběh hry</h1>
+            <div class="text-block-container">
+                <p id="progress-text-1" class="dynamic-text current">Během hry budeš plnit takové debilnější (ale plně bezpečné) úlohy. Vše musíš nahrát na videa. U každé úlohy je vždy zadání. Celkem bude 5 úloh.</p>
+                <p id="progress-text-2" class="dynamic-text">Pokud nedokážeš splnit některou ze zadaných úloh, tak bohužel nemůžeš pokračovat dále, ani do levlu 3 a získáš pouze a jen peníze z levlu 1!</p>
+                <p id="progress-text-3" class="dynamic-text">Všechna videa musí být nahrávána od začátku až do konce. Tedy od chvíle, kdy vyrazíš dle zadání na nějaké místo udělat tu zadanou věc až do chvíle, kdy se vrátíš zpět. Celé provedení věci musí být zdokumentováno na videu s pokud možno nejlepší možnou kvalitou! Od začátku až do konce!</p>
+            </div>
+            <button id="next-progress-btn" class="game-button">Další</button>
+        </div>
+
+        <div id="ready-screen" class="game-screen">
+            <h1 id="ready-title" class="title">Připravena?</h1>
+            <div class="text-block-container">
+                <p id="ready-text" class="dynamic-text current">Až budeš připravena hrát, stiskni tlačítko!</p>
+            </div>
+            <button id="start-game-btn" class="game-button">Jdeme na hru!</button>
+        </div>
+
+        <div id="start-loading-screen" class="game-screen loading-overlay">
+            <div class="loading-spinner"></div>
+        </div>
+
+        <div id="getting-ready-screen" class="game-screen black-screen">
+            <p>Getting Ready!</p>
+        </div>
+
+        <div id="task1-screen" class="game-screen task-screen">
+            <h2>Úloha 1</h2>
+            <div class="task-box">
+                <h3>Zadání</h3>
+                <p>Nyní zdokumentuj, jak jdeš k dědovi a vylezeš na střechu nového sklepa a uděláš na ní aspoň krok. Následně nahraj, jak slezeš a jak se vrátíš. Otevření aplikace Fotoaparát a Galerie ti nezruší hru.</p>
+            </div>
+            <div class="task-box">
+                <h3>Odevzdání</h3>
+                <p>Video prosím odešli do skupiny NTS na WhatsAppu (skupina Level2). Po odeslání klikni na tlačítko níže. Otevření aplikace WhatsApp ti nezruší hru.</p>
+            </div>
+            <hr>
+            <button id="verify-task1-btn" class="game-button">Ověřit odeslání a jít dál</button>
+        </div>
+
+        <div id="verifying-screen" class="game-screen verifying-overlay">
+            <p>Ověřuji odeslání<span class="dots"></span></p>
+        </div>
+
+        <div id="task2-screen" class="game-screen task-screen">
+            <h2>Úloha 2</h2>
+            <div class="task-box">
+                <h3>Zadání</h3>
+                <p>Nyní zdokumentuj, jak jdeš ke Kubíčkovi a odšpuntuješ vanu s vodou. Vypustíš tolik vody, aby to doteklo až na chodník. (Neboj, vypuštěnou vodu po tobě půjdu napustit hadicí zpět a z chodníku ji smetu). Na videu musí být vidět i kam až voda dotekla a na chodníku by měla udělat aspoň kaluž (jinak neuznám)! Následně nahraj, jak se vrátíš. Otevření aplikace Fotoaparát a Galerie ti nezruší hru. Vše, co tam natropíš po tobě samozřejmě ihned uklidím, "vysuším" chodník co to půjde a napustím novou vodu.</p>
+            </div>
+            <div class="task-box">
+                <h3>Odevzdání</h3>
+                <p>Video prosím odešli do skupiny NTS na WhatsAppu (skupina Level2). Po odeslání klikni na tlačítko níže. Otevření aplikace WhatsApp ti nezruší hru.</p>
+            </div>
+            <hr>
+            <button id="verify-task2-btn" class="game-button">Ověřit odeslání a jít dál</button>
+        </div>
+
+        <div id="task3-screen" class="game-screen task-screen">
+            <h2>Úloha 3</h2>
+            <div class="task-box">
+                <h3>Zadání</h3>
+                <p>Nyní zdokumentuj, jak zapneš vodu nahoře na kopci na zahradě (na cestě směrem k rybníku u mého políčka) a necháš vodu z hadice tést tak dlouho, dokud nedoteče aspoň do půlky kopce. Na videu musí být vidět zřetelně, že je to půlka kopce! Následně nahraj, jak se vrátíš. Otevření aplikace Fotoaparát a Galerie ti nezruší hru.</p>
+            </div>
+            <div class="task-box">
+                <h3>Odevzdání</h3>
+                <p>Video prosím odešli do skupiny NTS na WhatsAppu (skupina Level2). Po odeslání klikni na tlačítko níže. Otevření aplikace WhatsApp ti nezruší hru.</p>
+            </div>
+            <hr>
+            <button id="verify-task3-btn" class="game-button">Ověřit odeslání a jít dál</button>
+        </div>
+
+        <div id="task4-screen" class="game-screen task-screen">
+            <h2>Úloha 4</h2>
+            <div class="task-box">
+                <h3>Zadání</h3>
+                <p>Nyní zdokumentuj, jak na dvoře dáš hadici k tomu plechu, co předěluje zeď mezi námi a babičkou. Pak tam zapni vodu a nech ji téct tak dlouho, dokud voda nedoteče viditelněji k babičce. Následně jdi k babičce a nahraj, jak tam voda natekla. Následně nahraj, jak jak se vrátíš. Pokud to bude nutné, půjdu vodu k babičce alespoň nějak vysušit. Otevření aplikace Fotoaparát a Galerie ti nezruší hru.</p>
+            </div>
+            <div class="task-box">
+                <h3>Odevzdání</h3>
+                <p>Video prosím odešli do skupiny NTS na WhatsAppu (skupina Level2). Po odeslání klikni na tlačítko níže. Otevření aplikace WhatsApp ti nezruší hru.</p>
+            </div>
+            <hr>
+            <button id="verify-task4-btn" class="game-button">Ověřit odeslání a jít dál</button>
+        </div>
+
+        <div id="task5-screen" class="game-screen task-screen">
+            <h2>Úloha 5</h2>
+            <div class="task-box">
+                <h3>Zadání</h3>
+                <p>Nyní zdokumentuj, jak jdeš do sklepa k dědovi (do starého) a když slezeš úplně dolů, tak ve dveřích (dole) v klice najdeš papírek. Papírek nahraj na video tak, aby bylo jasně vidět, co je na něm napsané! (Pak prosím papírek vyhoď) Následně nahraj, jak se vrátíš. Otevření aplikace Fotoaparát a Galerie ti nezruší hru.</p>
+            </div>
+            <div class="task-box">
+                <h3>Odevzdání</h3>
+                <p>Video prosím odešli do skupiny NTS na WhatsAppu (skupina Level2). Po odeslání klikni na tlačítko níže. Otevření aplikace WhatsApp ti nezruší hru.</p>
+            </div>
+            <hr>
+            <button id="verify-task5-btn" class="game-button">Ověřit odeslání a dokončit</button>
+        </div>
+
+        <div id="level-complete-screen" class="game-screen">
+            <p>Výborně, další level máš dokončen!</p>
+            <p>Tento level bude vyhodnocen a započítám ti tolik peněz, kolik si zasloužíš, maximum není určeno!</p>
+            <p>Až budeš připravena na další, stiskni tlačítko níže...</p>
+            <button id="go-next-level-btn" class="game-button">Jít do dalšího levlu...</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

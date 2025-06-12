@@ -1,0 +1,230 @@
+body {
+    margin: 0;
+    overflow: hidden; /* Zabrání scrollování */
+    font-family: Arial, Helvetica, sans-serif; /* Standardní, čitelný font */
+    background-color: #000;
+    color: #0F0; /* Neonově zelená pro text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-size: 1.1em; /* Mírně menší font pro lepší čitelnost a prostor */
+    text-shadow: 0 0 5px #0F0; /* Lehký zářivý efekt */
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="%230F0" d="M7 0L0 7l9 9 7-7z"/></svg>') 8 8, auto; /* Herní kurzor */
+}
+
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #1a1a1a; /* Tmavší pozadí pro hlavní kontejner */
+    border: 5px solid #0F0;
+    box-shadow: 0 0 20px #0F0; /* Zářivý rámeček */
+    overflow: hidden;
+}
+
+.game-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%); /* Výchozí pozice mimo obrazovku vpravo */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Přechody pro plynulý posun */
+    background-color: rgba(0, 0, 0, 0.8); /* Mírně průhledné pozadí */
+    z-index: 1; /* Základní z-index */
+}
+
+.game-screen.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0); /* Aktivní obrazovka se posune do středu */
+    z-index: 10; /* Aktivní obrazovka je nahoře */
+}
+
+/* Animace pro posun textu a prvků */
+.slide-out-left {
+    transform: translateX(-100%) !important; /* Důležité pro přepsání */
+    opacity: 0;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.slide-out-right {
+    transform: translateX(100%) !important;
+    opacity: 0;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.slide-in-right {
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+/* Styly pro textové bloky s dynamickým obsahem */
+.text-block-container {
+    position: relative; /* Pro absolutní pozicování textů */
+    width: 90%; /* Větší šířka pro texty */
+    max-width: 900px;
+    height: 250px; /* Pevná výška, aby se texty vešly */
+    margin-bottom: 30px;
+    overflow: hidden; /* Skryje texty, které nejsou aktivní */
+    display: flex; /* Použijeme flexbox pro zarovnání textů */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.dynamic-text {
+    position: absolute;
+    width: 100%;
+    top: 50%; /* Vertikální zarovnání */
+    transform: translate(-100%, -50%); /* Posun zprava a vycentrování */
+    opacity: 0;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    padding: 0 10px; /* Malý padding pro okraje */
+    line-height: 1.4; /* Lepší rozestup řádků */
+}
+
+.dynamic-text.current {
+    opacity: 1;
+    transform: translate(0, -50%); /* Aktivní text je uprostřed a vycentrovaný */
+}
+
+
+h1.title, h2 {
+    color: #0F0;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-size: 2em; /* Mírně menší nadpisy pro lepší prostor */
+    text-shadow: 0 0 10px #0F0;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* Animace i pro nadpisy */
+}
+
+p {
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+.game-button {
+    background-color: #0F0;
+    color: #000;
+    border: 3px solid #0F0;
+    padding: 15px 30px;
+    font-size: 1.1em; /* Mírně menší tlačítka */
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px #0F0;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.game-button:hover {
+    background-color: #000;
+    color: #0F0;
+    box-shadow: 0 0 20px #0F0;
+    transform: scale(1.05); /* Mírné zvětšení při hoveru */
+}
+
+/* Loading dots animation */
+.dots {
+    display: inline-block;
+    width: 40px; /* Větší šířka pro více teček */
+    text-align: left;
+    overflow: hidden; /* Zamezí přetečení */
+    vertical-align: bottom; /* Zarovnání s textem */
+}
+
+.dots::after {
+    content: '';
+    display: inline-block;
+    animation: loading-dots 1s infinite steps(4, end); /* 4 tečky */
+}
+
+@keyframes loading-dots {
+    0% { content: ''; }
+    25% { content: '.'; }
+    50% { content: '..'; }
+    75% { content: '...'; }
+    100% { content: '....'; }
+}
+
+/* Loading spinner */
+.loading-spinner {
+    border: 8px solid rgba(0, 255, 0, 0.3);
+    border-top: 8px solid #0F0;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 1.5s linear infinite;
+    box-shadow: 0 0 20px #0F0;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Task boxes */
+.task-screen {
+    justify-content: flex-start; /* Zarovnání nahoru pro úlohy */
+    padding-top: 50px;
+}
+
+.task-box {
+    border: 2px solid #0F0;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: rgba(0, 50, 0, 0.3);
+    width: 80%;
+    max-width: 700px;
+    text-align: left;
+    box-shadow: 0 0 10px rgba(0,255,0,0.5); /* Lehký zářivý box-shadow */
+    min-height: 100px; /* Minimální výška pro úkolový box */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.task-box h3 {
+    color: #0F0;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.4em; /* Mírně menší nadpisy v boxu */
+    text-shadow: 0 0 8px #0F0;
+}
+
+hr {
+    border: none;
+    border-top: 3px dashed #0F0;
+    width: 80%;
+    margin: 30px 0;
+}
+
+/* Dimming and fade effects */
+.black-screen {
+    background-color: #000;
+    transition: opacity 1s ease-in-out;
+}
+
+.game-container.dimmed .game-screen.active {
+    background-color: rgba(0, 0, 0, 0.95); /* Ztlumí pozadí na aktivní obrazovce */
+    transition: background-color 1s ease-in-out;
+}
+
+/* Overlay screens */
+.loading-overlay, .verifying-overlay {
+    background-color: rgba(0, 0, 0, 0.95); /* Téměř plné zatmavení */
+    z-index: 20; /* Nad všemi ostatními obrazovkami */
+}
